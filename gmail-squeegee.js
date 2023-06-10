@@ -22,6 +22,12 @@ function createTrigger() {
 }
 
 function showUnsubscribe() {
-    hasUnsubscribe = GmailApp.search('in:inbox label:' + 'unsubscribe')
-
+    let hasUnsubscribe = GmailApp.search(`in:inbox unsubscribe`)
+    let unsubArray = []
+    hasUnsubscribe.forEach(row => {
+        let subject = row.getFirstMessageSubject()
+        unsubArray.push([subject]);
+        Logger.log(subject);
+    }
+    )
 }
