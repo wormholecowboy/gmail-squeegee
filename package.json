@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/wormholecowboy/gmail-squeegee/issues"
   },
-  "homepage": "https://github.com/wormholecowboy/gmail-squeegee#readme"
+  "homepage": "https://github.com/wormholecowboy/gmail-squeegee#readme",
+  "dependencies": {
+    "@types/google-apps-script": "^1.0.64"
+  }
 }
