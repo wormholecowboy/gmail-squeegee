@@ -9,8 +9,8 @@ function onOpen() {
     SpreadsheetApp.getUi().createMenu('Gmail Squeegee')
         .addItem('Start Trigger', 'createTrigger')
         .addItem('Run Manual', 'autoArchive')
-        .addToUi()
-    showUnsubscribe()
+        .addToUi();
+    showUnsubscribe();
 }
 
 function createTrigger() {
@@ -27,7 +27,8 @@ function showUnsubscribe() {
     hasUnsubscribe.forEach(row => {
         let subject = row.getFirstMessageSubject()
         unsubArray.push([subject]);
-        Logger.log(subject);
     }
     )
+    unsubSheet.getRange(1, 1, unsubArray.length, 1).setValues(unsubArray)
 }
+
