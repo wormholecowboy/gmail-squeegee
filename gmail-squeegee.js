@@ -32,3 +32,31 @@ function showUnsubscribe() {
     unsubSheet.getRange(1, 1, unsubArray.length, 1).setValues(unsubArray)
 }
 
+function repeatingSubjects() {
+    let threads = GmailApp.getInboxThreads();
+    let subjects = [];
+    threads.forEach(t => {
+        let subject = t.getFirstMessageSubject()
+        subjects.push(subject)
+    });
+    subCount = {};
+    subjects.forEach(subject => {
+        if (!subCount[subject]) {
+            subCount[subject] = 1
+        } else {
+            subCount[subject]++;
+        }
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
