@@ -2,7 +2,7 @@ import 'google-apps-script';
 
 let ss = SpreadsheetApp.getActiveSpreadsheet()
 let unsubSheet = ss.getSheetByName('Unsubscribe')
-
+let Subjects = ss.getSheetByName('Repeating Subjects')
 
 
 function onOpen() {
@@ -37,7 +37,7 @@ function repeatingSubjects() {
     let subjects = [];
     threads.forEach(t => {
         let subject = t.getFirstMessageSubject()
-        subjects.push(subject)
+        subjects.push([subject])
     });
     subCount = {};
     subjects.forEach(subject => {
@@ -47,6 +47,12 @@ function repeatingSubjects() {
             subCount[subject]++;
         }
     })
+    let subjectsFiltered = subjects.filter((sub) => {
+        sub > 1;
+    })
+
+    subCountLen = Object.keys(subCount).length
+    Subjects.getRange(1, 1, subCountLen, 1).setValues(Object.keys(subCount))
 }
 
 
